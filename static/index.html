@@ -97,7 +97,7 @@
             formData.append("audio", file);
 
             try {
-                const res = await fetch("http://127.0.0.1:5000/transcribe", {
+                const res = await fetch("https://YOUR-SERVICE-NAME.onrender.com/transcribe", {
                     method: "POST",
                     body: formData
                 });
