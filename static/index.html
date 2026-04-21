@@ -4,115 +4,190 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Offline STT</title>
+    <title>Deepak Kumar | Portfolio</title>
 
-    <style>
-        body {
-            background: #0e0e0e;
-            color: #fff;
-            font-family: Arial;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+    <!-- Google Font: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-        .wrap {
-            background: #1b1b1b;
-            width: 420px;
-            padding: 25px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
-        }
-
-        input,
-        button {
-            width: 100%;
-            padding: 12px;
-            margin-top: 12px;
-            border-radius: 6px;
-            font-size: 15px;
-        }
-
-        button {
-            background: #0f9d58;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #0c7a45;
-        }
-
-        #status {
-            margin: 10px 0;
-            color: #ffd369;
-            font-size: 14px;
-        }
-
-        #output {
-            background: #000;
-            padding: 12px;
-            border-radius: 6px;
-            margin-top: 15px;
-            height: 150px;
-            overflow: auto;
-            white-space: pre-wrap;
-            text-align: left;
-            font-size: 14px;
-        }
-    </style>
+    <link rel="stylesheet" href="/static/style.css" />
 </head>
 
 <body>
-    <div class="wrap">
-        <h2>🎤 Offline Speech to Text</h2>
-        <input type="file" id="fileInput" accept="audio/*">
-        <button id="transcribeBtn">Transcribe</button>
-        <div id="status">Waiting for audio...</div>
-        <div id="output">Your text will appear here...</div>
-    </div>
+    <!-- Header / Navigation -->
+    <header class="header" id="top">
+        <nav class="navbar container">
+            <a href="#home" class="logo">Deepak</a>
 
-    <script>
-        const fileInput = document.getElementById("fileInput");
-        const btn = document.getElementById("transcribeBtn");
-        const statusBox = document.getElementById("status");
-        const outputBox = document.getElementById("output");
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false"
+                aria-controls="navLinks">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
-        btn.onclick = async () => {
-            const file = fileInput.files[0];
-            if (!file) {
-                statusBox.textContent = "❌ No audio selected.";
-                return;
-            }
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-            btn.disabled = true;
-            statusBox.textContent = "⏳ Processing... Please wait.";
-            outputBox.textContent = "Transcribing offline...";
+    <main>
+        <!-- Hero Section -->
+        <section class="hero section" id="home">
+            <div class="container hero-content">
+                <p class="hero-subtitle">Hello, I'm</p>
+                <h1>Deepak <span class="highlight">Kumar</span></h1>
+                <h2>Aspiring Software Developer</h2>
+                <p class="hero-tagline">"I build clean, creative, and user-friendly digital experiences."</p>
+                <p class="hero-description">
+                    Passionate 2nd-year student interested in programming, web development, and problem-solving.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+                </div>
+            </div>
+        </section>
 
-            const formData = new FormData();
-            formData.append("audio", file);
+        <!-- About Section -->
+        <section class="section reveal" id="about">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-text">
+                    I am a dedicated 2nd-year student with strong interest in software development, AI tools, and
+                    logical problem-solving. I enjoy learning new technologies and building creative projects.
+                    Currently, I am looking for part-time remote opportunities that allow me to gain practical
+                    experience while continuing my studies.
+                </p>
+            </div>
+        </section>
 
-            try {
-                const res = await fetch("https://YOUR-SERVICE-NAME.onrender.com/transcribe", {
-                    method: "POST",
-                    body: formData
-                });
-                const text = await res.text();
-                outputBox.textContent = text;
-                statusBox.textContent = "✅ Completed!";
-            }
-            catch (err) {
-                outputBox.textContent = "Error: " + err;
-                statusBox.textContent = "❌ Failed";
-            }
+        <!-- Skills Section -->
+        <section class="section reveal" id="skills">
+            <div class="container">
+                <h2 class="section-title">Skills</h2>
 
-            btn.disabled = false;
-        };
-    </script>
+                <div class="skills-group">
+                    <h3>Technical Skills</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card">Python</div>
+                        <div class="skill-card">C Programming</div>
+                        <div class="skill-card">Data Structures</div>
+                        <div class="skill-card">HTML</div>
+                        <div class="skill-card">CSS</div>
+                        <div class="skill-card">JavaScript (basic)</div>
+                        <div class="skill-card">Git (basic)</div>
+                    </div>
+                </div>
+
+                <div class="skills-group">
+                    <h3>Soft Skills</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card">Problem Solving</div>
+                        <div class="skill-card">Logical Thinking</div>
+                        <div class="skill-card">Quick Learner</div>
+                        <div class="skill-card">Communication</div>
+                        <div class="skill-card">Team Collaboration</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="section reveal" id="projects">
+            <div class="container">
+                <h2 class="section-title">Projects</h2>
+                <div class="projects-grid">
+                    <article class="project-card">
+                        <h3>AI Resume Analyzer</h3>
+                        <p>Concept project for matching candidate skills with job requirements using AI filtering.</p>
+                        <p class="tech-stack"><strong>Tech:</strong> HTML, CSS, JavaScript</p>
+                        <a href="#" class="btn btn-primary small-btn">GitHub</a>
+                    </article>
+
+                    <article class="project-card">
+                        <h3>Personal Portfolio Website</h3>
+                        <p>Responsive portfolio website with animations.</p>
+                        <p class="tech-stack"><strong>Tech:</strong> HTML, CSS, JavaScript</p>
+                        <a href="#" class="btn btn-primary small-btn">GitHub</a>
+                    </article>
+
+                    <article class="project-card">
+                        <h3>Data Structures Programs</h3>
+                        <p>Implementation of stacks, queues, linked lists, and sorting algorithms.</p>
+                        <p class="tech-stack"><strong>Tech:</strong> C, Python</p>
+                        <a href="#" class="btn btn-primary small-btn">GitHub</a>
+                    </article>
+
+                    <article class="project-card">
+                        <h3>Logical Problem-Solving Programs</h3>
+                        <p>Collection of aptitude and algorithm-based solutions.</p>
+                        <p class="tech-stack"><strong>Tech:</strong> Python</p>
+                        <a href="#" class="btn btn-primary small-btn">GitHub</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section class="section reveal" id="education">
+            <div class="container">
+                <h2 class="section-title">Education</h2>
+                <div class="education-card">
+                    <h3>Bachelor's Degree (Currently Pursuing)</h3>
+                    <p>2nd Year Undergraduate Student</p>
+                    <h4>Relevant Subjects:</h4>
+                    <ul>
+                        <li>Data Structures</li>
+                        <li>Programming in C</li>
+                        <li>Python Programming</li>
+                        <li>Digital Logic</li>
+                        <li>Basic Electronics</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section reveal" id="contact">
+            <div class="container">
+                <h2 class="section-title">Contact</h2>
+
+                <div class="contact-info">
+                    <p><strong>Email:</strong> your-email@example.com</p>
+                    <p><strong>GitHub:</strong> github.com/your-username</p>
+                    <p><strong>LinkedIn:</strong> linkedin.com/in/your-profile</p>
+                </div>
+
+                <p class="section-text center-text">
+                    I am open to internships, freelance work, and part-time remote opportunities.
+                </p>
+
+                <form id="contactForm" class="contact-form" novalidate>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required />
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required />
+
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Write your message" required></textarea>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <p class="form-feedback" id="formFeedback"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script src="/static/script.js"></script>
 </body>
 
 </html>
